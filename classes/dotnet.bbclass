@@ -12,9 +12,10 @@ dotnet_do_configure() {
 }
 
 dotnet_do_compile()  {
+    echo "Building project ${DOTNET_PROJECT}"
     cd ${S}
     mkdir -p ${B}
-    dotnet publish -o ${B} -c Release --no-self-contained -r linux-arm
+    dotnet publish ${DOTNET_PROJECT} -o ${B} -c Release --no-self-contained -r linux-arm
 }
 
 dotnet_do_install() {
