@@ -13,9 +13,18 @@ dotnet_do_configure() {
 
 dotnet_do_compile()  {
     echo "Building project ${DOTNET_PROJECT}"
+
+    if [ "${TARGET_ARCH}" = "x86_64" ]; then
+        BUILD_TARGET="linux-x64"
+    else
+        BUILD_TARGET="linux-arm"
+    fi
+
+    echo "Machine Type ${MACHINE} -> Build Target ${BUILD_TARGET}"
+
     cd ${S}
     mkdir -p ${B}
-    dotnet publish ${DOTNET_PROJECT} -o ${B} -c Release --no-self-contained -r linux-arm
+    dotnet publish ${DOTNET_PROJECT} -o ${B} -c Release --no-self-contained -r ${BUILD_TARGET}
 }
 
 dotnet_do_install() {
