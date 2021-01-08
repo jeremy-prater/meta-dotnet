@@ -1,5 +1,5 @@
 # meta-dotnet
-Yocto meta-layer for dotnet core 3.1 for armv7
+Yocto meta-layer for dotnet core 5.1 for armv7
 
 # Usage
 

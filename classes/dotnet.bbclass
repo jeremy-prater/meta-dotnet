@@ -2,11 +2,14 @@
 OECMAKE_SOURCEPATH ??= "${S}"
 
 DEPENDS_prepend += "dotnet-sdk-native "
-RDEPENDS_${PN} += "dotnet "
 
 B = "${S}/out"
 
 dotnet_do_configure() {
+    if [ -z ${DOTNET_PROJECT} ] ; then
+     bberror "DOTNET_PROJECT must be specified!"
+     exit -1
+    fi
     cd ${S}
     dotnet restore
 }
@@ -24,7 +27,7 @@ dotnet_do_compile()  {
 
     cd ${S}
     mkdir -p ${B}
-    dotnet publish ${DOTNET_PROJECT} -o ${B} -c Release --no-self-contained -r ${BUILD_TARGET}
+    dotnet publish -c Release -p:PublishTrimmed=true -o ${B} -r ${BUILD_TARGET} --self-contained true ${DOTNET_PROJECT}
 }
 
 dotnet_do_install() {
@@ -33,6 +36,10 @@ dotnet_do_install() {
     mkdir -p ${D}/opt/dotnet/${PN}
     cp -rv * ${D}/opt/dotnet/${PN}
 }
+
+INSANE_SKIP_${PN}_append += "already-stripped"
+INSANE_SKIP_${PN}_append += "staticdev"
+INSANE_SKIP_${PN}_append += "file-rdeps"
 
 FILES_${PN} += "/opt/dotnet/${PN}"
 

@@ -1,15 +1,15 @@
 
-DESCRIPTION = ".NET Core 3.1 SDK (v3.1.101) - Linux x64 Binaries"
-HOMEPAGE = "https://dotnet.microsoft.com/download/dotnet-core/3.1"
+DESCRIPTION = ".NET Core 5.0 SDK (v5.0.101) - Linux x64 Binaries"
+HOMEPAGE = "https://dotnet.microsoft.com/download/dotnet/5.0"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=9fc642ff452b28d62ab19b7eea50dfb9"
 
-SOURCE_FILE = "dotnet-sdk-3.1.101-linux-x64.tar.gz"
+SOURCE_FILE = "dotnet-sdk-5.0.101-linux-x64.tar.gz"
 
-SRC_URI = "https://download.visualstudio.microsoft.com/download/pr/c4b503d6-2f41-4908-b634-270a0a1dcfca/c5a20e42868a48a2cd1ae27cf038044c/${SOURCE_FILE};unpack=0 \
+SRC_URI = "https://download.visualstudio.microsoft.com/download/pr/a0487784-534a-4912-a4dd-017382083865/be16057043a8f7b6f08c902dc48dd677/${SOURCE_FILE};unpack=0 \
            file://LICENSE.txt \
 "
-SRC_URI[sha256sum] = "a1060891482267f4b36a877b547396d7838bc36c65ef16db192344fd9b29211d"
+SRC_URI[sha256sum] = "23df1eca7eb1302dfb10f4edce7edf7150e57698576f61b2dcb777c833cbd80c"
 
 inherit native
 
