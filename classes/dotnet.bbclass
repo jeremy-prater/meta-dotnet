@@ -5,6 +5,9 @@ DEPENDS_prepend += "dotnet-sdk-native "
 
 B = "${S}/out"
 
+# Don't use users's $HOME/.dotnet directory
+export HOME = "${WORKDIR}"
+
 dotnet_do_configure() {
     if [ -z ${DOTNET_PROJECT} ] ; then
      bberror "DOTNET_PROJECT must be specified!"
