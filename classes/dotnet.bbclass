@@ -5,10 +5,9 @@ DEPENDS_prepend += "dotnet-sdk-native "
 
 B = "${S}/out"
 
-# Don't use users's $HOME/.dotnet directory
-export HOME = "${WORKDIR}"
-
 dotnet_do_configure() {
+    # Don't use users's $HOME/.dotnet during configuration
+    export HOME = "${WORKDIR}"
     if [ -z ${DOTNET_PROJECT} ] ; then
      bberror "DOTNET_PROJECT must be specified!"
      exit -1
@@ -18,6 +17,8 @@ dotnet_do_configure() {
 }
 
 dotnet_do_compile()  {
+    # Don't use users's $HOME/.dotnet during compilation
+    export HOME = "${WORKDIR}"
     echo "Building project ${DOTNET_PROJECT}"
 
     if [ "${TARGET_ARCH}" = "x86_64" ]; then
