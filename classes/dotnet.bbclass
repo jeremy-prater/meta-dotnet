@@ -23,6 +23,8 @@ dotnet_do_compile()  {
 
     if [ "${TARGET_ARCH}" = "x86_64" ]; then
         BUILD_TARGET="linux-x64"
+    elif [ "${TARGET_ARCH}" = "aarch64" ]; then
+	BUILD_TARGET="linux-arm64"
     else
         BUILD_TARGET="linux-arm"
     fi
