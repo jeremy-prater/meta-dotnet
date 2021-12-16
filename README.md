@@ -1,5 +1,5 @@
 # meta-dotnet
-Yocto meta-layer for dotnet core 5.1 for armv7
+Yocto meta-layer for dotnet core 6.0.1 for armv7/aarch64/x86
 
 # Usage
 
