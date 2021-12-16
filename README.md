@@ -28,8 +28,4 @@ This does a few things, when you `inherit dotnet` meta-layer class, it will does
 
 The resultant application is a self-contained, compressed, trimmed package. No dotnet runtime is required on the target rootfs
 
-And user applications get installed at `/opt/dotnet/${PN}`
-
-Running the application on target should be trivial by adding `/opt/dotnet` to the environment path so the `dotnet` runtime interpreter is available.
-
-Then you can just `dotnet mydotnetapp.dll` assuming your dotnet application library has an entry point!
+The applications will be installed at `/opt/dotnet/${PN}`
