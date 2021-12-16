@@ -21,8 +21,7 @@ inherit dotnet
 This does a few things, when you `inherit dotnet` meta-layer class, it will does the following...
 
 - Automatically download the host dotnet sdk for linux x64 as a native build tool `dotnet-sdk-native` (In the future this could become mac and windows compatible, but I only yocto on linux)
-- Add an RDEPENDS_${PN} for `dotnet` which is the arm v7 runtime
-- Performs the required build steps `dotnet restore` and `dotnet build -c Release`
+- Performs the required build steps `dotnet restore` and `dotnet build -c Release ...`
 
 # Deployment
 
