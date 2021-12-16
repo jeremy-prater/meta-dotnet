@@ -26,7 +26,7 @@ This does a few things, when you `inherit dotnet` meta-layer class, it will does
 
 # Deployment
 
-The dotnet 3.1 runtime gets installed into `/opt/dotnet`
+The resultant application is a self-contained, compressed, trimmed package. No dotnet runtime is required on the target rootfs
 
 And user applications get installed at `/opt/dotnet/${PN}`
 
