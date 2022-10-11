@@ -1,7 +1,7 @@
 # Path to the dotnet project
 OECMAKE_SOURCEPATH ??= "${S}"
 
-DEPENDS_prepend += "dotnet-sdk-native "
+DEPENDS:prepend = "dotnet-sdk-native "
 
 B = "${S}/out"
 
@@ -46,6 +46,6 @@ dotnet_do_install() {
 INSANE_SKIP:${PN}:append = " staticdev"
 INSANE_SKIP:${PN}:append = " file-rdeps"
 
-FILES_${PN} += "/opt/dotnet/${PN}"
+FILES:${PN} = "/opt/dotnet/${PN}"
 
 EXPORT_FUNCTIONS do_configure do_compile do_install
