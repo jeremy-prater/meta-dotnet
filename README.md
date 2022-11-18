@@ -1,11 +1,11 @@
 # meta-dotnet
-Yocto meta-layer for dotnet core 6.0.402 for armv7/aarch64/x86
+Yocto meta-layer for dotnet core 7.0.100 for armv7/aarch64/x86
 
 # Compatibility
 
 | Branch  | Compatible Layers | Supported Arch         | dotnet version |
 |---------|-------------------|------------------------|----------------|
-| master  | Kirkstone         | x86_64, armv7, aarch64 | 6.0.402        |
+| master  | Kirkstone         | x86_64, armv7, aarch64 | 7.0.100        |
 | dunfell | dunfell, zeus     | x86_64, armv7, aarch64 | 6.0.101        |
 | pyro    | N/A               | x86_64, armv7          | 3.1.101        |
 
