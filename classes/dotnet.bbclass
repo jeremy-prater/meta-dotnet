@@ -16,8 +16,7 @@ dotnet_do_configure() {
     dotnet restore
 }
 
-dotnet_do_compile()  {
-    # Don't use users's $HOME/.dotnet during compilation
+dotnet_do_compile() {
     export HOME="${WORKDIR}"
     echo "Building project ${DOTNET_PROJECT}"
 
@@ -25,8 +24,11 @@ dotnet_do_compile()  {
         BUILD_TARGET="linux-x64"
     elif [ "${TARGET_ARCH}" = "aarch64" ]; then
         BUILD_TARGET="linux-arm64"
-    else
+    elif [ "${TARGET_ARCH}" = "arm" ]; then
         BUILD_TARGET="linux-arm"
+    else
+        bberror "Architecture not supported: ${TARGET_ARCH}"
+        exit -1
     fi
 
     echo "Machine Type ${MACHINE} -> Build Target ${BUILD_TARGET}"
