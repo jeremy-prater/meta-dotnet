@@ -5,6 +5,8 @@ DEPENDS:prepend = "dotnet-sdk-native "
 
 B = "${S}/out"
 
+INSTALL_DIR ?= "/opt/dotnet/${PN}"
+
 dotnet_do_configure() {
     # Don't use users's $HOME/.dotnet during configuration
     export HOME="${WORKDIR}"
@@ -39,15 +41,13 @@ dotnet_do_compile() {
 }
 
 dotnet_do_install() {
-    cd ${B}
-    rm -rf recipe-sysroot-native
-    mkdir -p ${D}/opt/dotnet/${PN}
-    cp -rv * ${D}/opt/dotnet/${PN}
+    install -d ${D}/${INSTALL_DIR}
+    cp -r ${RELEASE_DIR}/* ${D}/${INSTALL_DIR}
 }
 
 INSANE_SKIP:${PN}:append = " staticdev"
 INSANE_SKIP:${PN}:append = " file-rdeps"
 
-FILES:${PN} = "/opt/dotnet/${PN}"
+FILES:${PN} = "${INSTALL_DIR}"
 
 EXPORT_FUNCTIONS do_configure do_compile do_install
