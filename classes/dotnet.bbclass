@@ -3,7 +3,8 @@ OECMAKE_SOURCEPATH ??= "${S}"
 
 DEPENDS:prepend = "dotnet-sdk-native "
 
-B = "${S}/out"
+ARTIFACTS_DIR = "${WORKDIR}/artifacts"
+RELEASE_DIR ?= "${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_linux-arm/"
 
 INSTALL_DIR ?= "/opt/dotnet/${PN}"
 
@@ -33,11 +34,14 @@ dotnet_do_compile() {
         exit -1
     fi
 
-    echo "Machine Type ${MACHINE} -> Build Target ${BUILD_TARGET}"
-
     cd ${S}
-    mkdir -p ${B}
-    dotnet publish -c Release -p:PublishTrimmed=true -o ${B} -r ${BUILD_TARGET} --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true ${DOTNET_PROJECT}
+    ${STAGING_DIR_NATIVE}${bindir}/dotnet publish \
+        --artifacts-path ${ARTIFACTS_DIR} \
+        --runtime ${BUILD_TARGET} \
+        --self-contained true \
+        -p:PublishTrimmed=true \
+        -c Release \
+        ${DOTNET_PROJECT}
 }
 
 dotnet_do_install() {
