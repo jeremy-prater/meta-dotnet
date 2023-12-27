@@ -45,8 +45,14 @@ dotnet_do_install() {
     cp -r ${RELEASE_DIR}/* ${D}/${INSTALL_DIR}
 }
 
-INSANE_SKIP:${PN}:append = " staticdev"
-INSANE_SKIP:${PN}:append = " file-rdeps"
+INSANE_SKIP:${PN}:append = " \
+    staticdev \
+    file-rdeps \
+    already-stripped \
+"
+
+do_configure[network] = "1"
+do_compile[network] = "1"
 
 FILES:${PN} = "${INSTALL_DIR}"
 
