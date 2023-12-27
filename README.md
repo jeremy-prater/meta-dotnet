@@ -35,4 +35,7 @@ This does a few things, when you `inherit dotnet` meta-layer class, it will does
 
 The resultant application is a self-contained, compressed, trimmed package. No dotnet runtime is required on the target rootfs
 
-The applications will be installed at `/opt/dotnet/${PN}`
+Installation path and artifacts path can be configured from the package recipe
+
+* `INSTALL_DIR` can be used to change the default `/opt/dotnet/${PN}` installation directory
+* `RELEASE_DIR` can be used to change the default publish path `${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_linux-arm/`
