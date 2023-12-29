@@ -47,8 +47,14 @@ dotnet_do_install() {
     cp -rv * ${D}/opt/dotnet/${PN}
 }
 
-INSANE_SKIP:${PN}:append = " staticdev"
-INSANE_SKIP:${PN}:append = " file-rdeps"
+INSANE_SKIP:${PN}:append = " \
+    staticdev \
+    file-rdeps \
+    already-stripped \
+"
+
+do_configure[network] = "1"
+do_compile[network] = "1"
 
 FILES:${PN} = "/opt/dotnet/${PN}"
 
