@@ -3,6 +3,21 @@ OECMAKE_SOURCEPATH ??= "${S}"
 
 DEPENDS:prepend = "dotnet-sdk-native "
 
+python () {
+    target_arch = d.getVar("TARGET_ARCH")
+    if "x86_64" in target_arch:
+        d.appendVar('BUILD_TARGET', "linux-x64")
+        return
+    if "aarch64" in target_arch:
+        d.appendVar('BUILD_TARGET', "linux-arm64")
+        return
+    if "arm" in target_arch:
+        d.appendVar('BUILD_TARGET', "linux-arm")
+        return
+
+    bb.fatal("Architecture not supported: " + target_arch)
+}
+
 B = "${S}/out"
 
 dotnet_do_configure() {
@@ -16,20 +31,9 @@ dotnet_do_configure() {
     dotnet restore
 }
 
-dotnet_do_compile()  {
-    # Don't use users's $HOME/.dotnet during compilation
+dotnet_do_compile() {
     export HOME="${WORKDIR}"
     echo "Building project ${DOTNET_PROJECT}"
-
-    if [ "${TARGET_ARCH}" = "x86_64" ]; then
-        BUILD_TARGET="linux-x64"
-    elif [ "${TARGET_ARCH}" = "aarch64" ]; then
-        BUILD_TARGET="linux-arm64"
-    else
-        BUILD_TARGET="linux-arm"
-    fi
-
-    echo "Machine Type ${MACHINE} -> Build Target ${BUILD_TARGET}"
 
     cd ${S}
     mkdir -p ${B}
