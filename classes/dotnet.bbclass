@@ -18,7 +18,8 @@ python () {
     bb.fatal("Architecture not supported: " + target_arch)
 }
 
-B = "${S}/out"
+ARTIFACTS_DIR = "${WORKDIR}/artifacts"
+RELEASE_DIR ?= "${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_${BUILD_TARGET}/"
 
 dotnet_do_configure() {
     # Don't use users's $HOME/.dotnet during configuration
@@ -36,8 +37,13 @@ dotnet_do_compile() {
     echo "Building project ${DOTNET_PROJECT}"
 
     cd ${S}
-    mkdir -p ${B}
-    dotnet publish -c Release -p:PublishTrimmed=true -o ${B} -r ${BUILD_TARGET} --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true ${DOTNET_PROJECT}
+    ${STAGING_DIR_NATIVE}${bindir}/dotnet publish \
+        --artifacts-path ${ARTIFACTS_DIR} \
+        --runtime ${BUILD_TARGET} \
+        --self-contained true \
+        -p:PublishTrimmed=true \
+        -c Release \
+        ${DOTNET_PROJECT}
 }
 
 dotnet_do_install() {
