@@ -21,6 +21,8 @@ python () {
 ARTIFACTS_DIR = "${WORKDIR}/artifacts"
 RELEASE_DIR ?= "${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_${BUILD_TARGET}/"
 
+INSTALL_DIR ?= "/opt/dotnet/${PN}"
+
 dotnet_do_configure() {
     # Don't use users's $HOME/.dotnet during configuration
     export HOME="${WORKDIR}"
@@ -47,10 +49,8 @@ dotnet_do_compile() {
 }
 
 dotnet_do_install() {
-    cd ${B}
-    rm -rf recipe-sysroot-native
-    mkdir -p ${D}/opt/dotnet/${PN}
-    cp -rv * ${D}/opt/dotnet/${PN}
+    install -d ${D}/${INSTALL_DIR}
+    cp -R --no-dereference --preserve=mode,links -v ${RELEASE_DIR}/* ${D}/${INSTALL_DIR}/
 }
 
 INSANE_SKIP:${PN}:append = " \
@@ -62,6 +62,6 @@ INSANE_SKIP:${PN}:append = " \
 do_configure[network] = "1"
 do_compile[network] = "1"
 
-FILES:${PN} = "/opt/dotnet/${PN}"
+FILES:${PN} = "${INSTALL_DIR}"
 
 EXPORT_FUNCTIONS do_configure do_compile do_install
