@@ -1,13 +1,14 @@
 # meta-dotnet
-Yocto meta-layer for dotnet core 7.0.100 for armv7/aarch64/x86
+Yocto meta-layer for dotnet core 8.0.100 for armv7/aarch64/x86
 
 # Compatibility
 
-| Branch  | Compatible Layers | Supported Arch         | dotnet version |
-|---------|-------------------|------------------------|----------------|
-| master  | Kirkstone         | x86_64, armv7, aarch64 | 7.0.100        |
-| dunfell | dunfell, zeus     | x86_64, armv7, aarch64 | 7.0.100        |
-| pyro    | N/A               | x86_64, armv7          | 3.1.101        |
+| Branch     | Compatible Layers | Supported Arch         | dotnet version |
+|------------|-------------------|------------------------|----------------|
+| master     | Kirkstone         | x86_64, armv7, aarch64 | 8.0.100        |
+| kirkstone  | Kirkstone         | x86_64, armv7, aarch64 | 8.0.100        |
+| dunfell    | dunfell, zeus     | x86_64, armv7, aarch64 | 7.0.100        |
+| pyro       | N/A               | x86_64, armv7          | 3.1.101        |
 
 # Usage
 
@@ -35,4 +36,6 @@ This does a few things, when you `inherit dotnet` meta-layer class, it will does
 
 The resultant application is a self-contained, compressed, trimmed package. No dotnet runtime is required on the target rootfs
 
-The applications will be installed at `/opt/dotnet/${PN}`
+Installation path and artifacts path can be configured from the package recipe
+
+* `INSTALL_DIR` can be used to change the default `/opt/dotnet/${PN}` installation directory
