@@ -39,3 +39,4 @@ Installation path and artifacts path can be configured from the package recipe
 
 * `INSTALL_DIR` can be used to change the default `/opt/dotnet/${PN}` installation directory
 * `RELEASE_DIR` can be used to change the default publish path `${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_linux-arm/`
+* `ENABLE_READYTORUN` can be used to enable/disable AOT (default true)
