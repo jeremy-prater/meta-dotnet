@@ -23,6 +23,8 @@ RELEASE_DIR ?= "${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_${BUILD_TARGE
 
 INSTALL_DIR ?= "/opt/dotnet/${PN}"
 
+ENABLE_READYTORUN ?= "false"
+
 dotnet_do_configure() {
     # Don't use users's $HOME/.dotnet during configuration
     export HOME="${WORKDIR}"
@@ -44,6 +46,7 @@ dotnet_do_compile() {
         --runtime ${BUILD_TARGET} \
         --self-contained true \
         -p:PublishTrimmed=true \
+        -p:PublishReadyToRun=${ENABLE_READYTORUN} \
         -c Release \
         ${DOTNET_PROJECT}
 }

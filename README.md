@@ -39,3 +39,4 @@ The resultant application is a self-contained, compressed, trimmed package. No d
 Installation path and artifacts path can be configured from the package recipe
 
 * `INSTALL_DIR` can be used to change the default `/opt/dotnet/${PN}` installation directory
+* `ENABLE_READYTORUN` can be used to enable/disable AOT (default false)
