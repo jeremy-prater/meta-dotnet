@@ -13,6 +13,12 @@ Yocto meta-layer for dotnet core 7.0.100 for armv7/aarch64/x86
 
 Add this meta layer to your project (refer to yocto user manual)
 
+You may need to add following lines to you local.conf file (enabling access to NuGet.org in configure and compile steps):  
+```
+do_configure[network] = "1"
+do_compile[network] = "1"
+```
+
 Create a new dotnet core application and include it in your yocto build as follows...
 
 ```
