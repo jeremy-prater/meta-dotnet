@@ -14,7 +14,7 @@ Yocto meta-layer for dotnet core 8.0.100 for armv7/aarch64/x86
 
 Add this meta layer to your project (refer to yocto user manual)
 
-You may need to add following lines to you local.conf file (enabling access to NuGet.org in configure and compile steps):  
+You may need to ~add following lines to you local.conf file~ (enabling access to NuGet.org in configure and compile steps):  
 
 You may not need this in `local.conf` it could just be in the recipe for the dotnet project...
 
