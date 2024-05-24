@@ -43,6 +43,9 @@ dotnet_do_install() {
     cp -rv * ${D}/opt/dotnet/${PN}
 }
 
+INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+
 INSANE_SKIP_${PN}_append += "already-stripped"
 INSANE_SKIP_${PN}_append += "staticdev"
 INSANE_SKIP_${PN}_append += "file-rdeps"
