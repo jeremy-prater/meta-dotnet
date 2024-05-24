@@ -61,6 +61,8 @@ INSANE_SKIP:${PN}:append = " \
     file-rdeps \
     already-stripped \
 "
+INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
 do_configure[network] = "1"
 do_compile[network] = "1"
