@@ -1,1 +1,3 @@
 .vscode
+recipes-test/dotnet-hello-world.bb/files/hello-world/obj/
+recipes-test/dotnet-hello-world.bb/files/obj/
