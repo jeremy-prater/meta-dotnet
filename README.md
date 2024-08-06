@@ -5,9 +5,9 @@ Yocto meta-layer for dotnet core 8.0.100 for armv7/aarch64/x86
 
 | Branch     | Compatible Layers | Supported Arch         | dotnet version |
 |------------|-------------------|------------------------|----------------|
-| master     | Kirkstone         | x86_64, armv7, aarch64 | 8.0.100        |
-| kirkstone  | Kirkstone         | x86_64, armv7, aarch64 | 8.0.100        |
-| dunfell    | dunfell, zeus     | x86_64, armv7, aarch64 | 7.0.100        |
+| master     | Kirkstone         | x86_64, armv7, aarch64 | 8.0.303        |
+| kirkstone  | Kirkstone         | x86_64, armv7, aarch64 | 8.0.303        |
+| dunfell    | dunfell, zeus     | x86_64, armv7, aarch64 | 8.0.303        |
 | pyro       | N/A               | x86_64, armv7          | 3.1.101        |
 
 # Usage
