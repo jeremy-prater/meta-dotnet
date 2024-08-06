@@ -9,7 +9,7 @@ SOURCE_FILE = "dotnet-sdk-8.0.303-linux-x64.tar.gz"
 SRC_URI = "https://download.visualstudio.microsoft.com/download/pr/60218cc4-13eb-41d5-aa0b-5fd5a3fb03b8/6c42bee7c3651b1317b709a27a741362/${SOURCE_FILE};unpack=0 \
            file://LICENSE.txt \
 "
-SRC_URI[sha512sum] = "13905ea20191e70baeba50b0e9bbe5f752a7c34587878ee104744f9fb453bfe439994d38969722bdae7f60ee047d75dda8636f3ab62659450e9cd4024f38b2a5"
+SRC_URI[sha512sum] = "814ff07ccdfc8160c4a24adfda6c815e7feace88c59722f827a5a27041719067538754911fc15cb46978e16566fe0938695891723d182055190e876131faedda"
 
 inherit native
 
