@@ -37,3 +37,5 @@ This does a few things, when you `inherit dotnet` meta-layer class, it will does
 The resultant application is a self-contained, compressed, trimmed package. No dotnet runtime is required on the target rootfs
 
 The applications will be installed at `/opt/dotnet/${PN}`
+
+* `ENABLE_TRIMMING` can be used to enable/disable Trimming (default true)

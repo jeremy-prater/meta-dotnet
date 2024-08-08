@@ -16,6 +16,8 @@ dotnet_do_configure() {
     dotnet restore
 }
 
+ENABLE_TRIMMING ?= "true"
+
 dotnet_do_compile()  {
     # Don't use users's $HOME/.dotnet during compilation
     export HOME="${WORKDIR}"
@@ -33,7 +35,7 @@ dotnet_do_compile()  {
 
     cd ${S}
     mkdir -p ${B}
-    dotnet publish -c Release -p:PublishTrimmed=true -o ${B} -r ${BUILD_TARGET} --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true ${DOTNET_PROJECT}
+    dotnet publish -c Release -p:PublishTrimmed=${ENABLE_TRIMMING} -o ${B} -r ${BUILD_TARGET} --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true ${DOTNET_PROJECT}
 }
 
 dotnet_do_install() {
