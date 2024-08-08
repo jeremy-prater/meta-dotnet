@@ -24,6 +24,7 @@ RELEASE_DIR ?= "${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_${BUILD_TARGE
 INSTALL_DIR ?= "/opt/dotnet/${PN}"
 
 ENABLE_READYTORUN ?= "false"
+ENABLE_TRIMMING ?= "true"
 
 dotnet_do_configure() {
     # Don't use users's $HOME/.dotnet during configuration
@@ -45,7 +46,7 @@ dotnet_do_compile() {
         --artifacts-path ${ARTIFACTS_DIR} \
         --runtime ${BUILD_TARGET} \
         --self-contained true \
-        -p:PublishTrimmed=true \
+        -p:PublishTrimmed=${ENABLE_TRIMMING} \
         -p:PublishReadyToRun=${ENABLE_READYTORUN} \
         -c Release \
         ${DOTNET_PROJECT}
