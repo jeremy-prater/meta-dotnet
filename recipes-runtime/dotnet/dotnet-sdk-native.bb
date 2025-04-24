@@ -21,3 +21,5 @@ do_install() {
     install -d ${D}${bindir}
     tar -axf ${WORKDIR}/${SOURCE_FILE} -C ${D}${bindir}
 }
+
+INSANE_SKIP:${PN} += "already-stripped"
