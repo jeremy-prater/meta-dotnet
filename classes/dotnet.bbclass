@@ -18,8 +18,14 @@ python () {
     bb.fatal("Architecture not supported: " + target_arch)
 }
 
+python () {
+    from pathlib import Path
+    dotnet_project = d.getVar("DOTNET_PROJECT")
+    d.appendVar('DOTNET_PROJECT_NAME', Path(dotnet_project).stem)
+}
+
 ARTIFACTS_DIR = "${WORKDIR}/artifacts"
-RELEASE_DIR ?= "${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_${BUILD_TARGET}/"
+RELEASE_DIR ?= "${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT_NAME}/release_${BUILD_TARGET}/"
 
 INSTALL_DIR ?= "/opt/dotnet/${PN}"
 
