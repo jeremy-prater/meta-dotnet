@@ -13,13 +13,13 @@ SRC_URI[sha512sum] = "814ff07ccdfc8160c4a24adfda6c815e7feace88c59722f827a5a27041
 
 inherit native
 
-S="${WORKDIR}"
+S = "${UNPACKDIR}"
 
 do_install() {
     echo "Installing ${DESCRIPTION} ..."
 
     install -d ${D}${bindir}
-    tar -axf ${WORKDIR}/${SOURCE_FILE} -C ${D}${bindir}
+    tar -axf ${UNPACKDIR}/${SOURCE_FILE} -C ${D}${bindir}
 }
 
 INSANE_SKIP:${PN} += "already-stripped"

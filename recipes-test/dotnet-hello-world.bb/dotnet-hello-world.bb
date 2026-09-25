@@ -8,6 +8,6 @@ SRC_URI = "file://hello-world/hello-world.cs \
 
 DOTNET_PROJECT = "hello-world"
 
-S = "${WORKDIR}"
+S = "${UNPACKDIR}"
 
 inherit dotnet
