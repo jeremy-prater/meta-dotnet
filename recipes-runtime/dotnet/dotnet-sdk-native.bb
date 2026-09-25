@@ -1,15 +1,16 @@
-
-DESCRIPTION = ".NET Core SDK (v8.0.303) - Linux x64 Binaries"
-HOMEPAGE = "https://dotnet.microsoft.com/en-us/download/dotnet/6.0"
+DESCRIPTION = ".NET SDK (v${PV}) - Linux x64 Binaries"
+HOMEPAGE = "https://dotnet.microsoft.com/en-us/download/dotnet/10.0"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=9fc642ff452b28d62ab19b7eea50dfb9"
 
-SOURCE_FILE = "dotnet-sdk-8.0.303-linux-x64.tar.gz"
+PV = "10.0.401"
 
-SRC_URI = "https://download.visualstudio.microsoft.com/download/pr/60218cc4-13eb-41d5-aa0b-5fd5a3fb03b8/6c42bee7c3651b1317b709a27a741362/${SOURCE_FILE};unpack=0 \
+SOURCE_FILE = "dotnet-sdk-${PV}-linux-x64.tar.gz"
+
+SRC_URI = "https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/${SOURCE_FILE};unpack=0 \
            file://LICENSE.txt \
 "
-SRC_URI[sha512sum] = "814ff07ccdfc8160c4a24adfda6c815e7feace88c59722f827a5a27041719067538754911fc15cb46978e16566fe0938695891723d182055190e876131faedda"
+SRC_URI[sha512sum] = "51c8b999af9e8dd9998c9edc5944e19a90788862068acd38694e098889054ce8c23d4f0c5cccfa16bf187d044562359e5ee69a9f8ad0bbe913ba90311fbce25b"
 
 inherit native
 
