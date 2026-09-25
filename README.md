@@ -1,11 +1,11 @@
 # meta-dotnet
-Yocto meta-layer for dotnet core 8.0.100 for armv7/aarch64/x86
+Yocto meta-layer for dotnet 10.0 for armv7/aarch64/x86
 
 # Compatibility
 
 | Branch     | Compatible Layers    | Supported Arch         | dotnet version |
 |------------|----------------------|------------------------|----------------|
-| trunk      | Kirkstone, Scarthgap | x86_64, armv7, aarch64 | 8.0.303        |
+| trunk      | Kirkstone to Wrynose | x86_64, armv7, aarch64 | 10.0.401       |
 | kirkstone  | Kirkstone            | x86_64, armv7, aarch64 | 8.0.303        |
 | dunfell    | dunfell, zeus        | x86_64, armv7, aarch64 | 8.0.303        |
 | pyro       | N/A                  | x86_64, armv7          | 3.1.101        |
