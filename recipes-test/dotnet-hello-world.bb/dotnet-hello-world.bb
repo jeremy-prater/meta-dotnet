@@ -1,4 +1,4 @@
-DESCRIPTION = "dotnet 5.0 test application"
+DESCRIPTION = "dotnet test application"
 LICENSE = "CLOSED"
 
 SRC_URI = "file://hello-world/hello-world.cs \
