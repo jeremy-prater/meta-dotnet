@@ -50,3 +50,4 @@ Installation path and artifacts path can be configured from the package recipe
 * `INSTALL_DIR` can be used to change the default `/opt/dotnet/${PN}` installation directory
 * `ENABLE_READYTORUN` can be used to enable/disable AOT (default false)
 * `ENABLE_TRIMMING` can be used to enable/disable Trimming (default true)
+* `DOTNET_DEBUG_TYPE` selects the `DebugType` passed to `dotnet publish` (default `none`); `portable` or `embedded` keep symbols but leave the build path in the assembly, which the `buildpaths` QA check reports

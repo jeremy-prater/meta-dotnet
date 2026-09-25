@@ -25,6 +25,9 @@ INSTALL_DIR ?= "/opt/dotnet/${PN}"
 
 ENABLE_READYTORUN ?= "false"
 ENABLE_TRIMMING ?= "true"
+# The PDB path is embedded in the assembly by the trimmer and trips the
+# buildpaths QA check; set to "portable" or "embedded" to keep symbols.
+DOTNET_DEBUG_TYPE ?= "none"
 
 dotnet_do_configure() {
     # Don't use users's $HOME/.dotnet during configuration
@@ -48,6 +51,7 @@ dotnet_do_compile() {
         --self-contained true \
         -p:PublishTrimmed=${ENABLE_TRIMMING} \
         -p:PublishReadyToRun=${ENABLE_READYTORUN} \
+        -p:DebugType=${DOTNET_DEBUG_TYPE} \
         -c Release \
         ${DOTNET_PROJECT}
 }
