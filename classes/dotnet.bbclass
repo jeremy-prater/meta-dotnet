@@ -1,5 +1,12 @@
-# Path to the dotnet project
-OECMAKE_SOURCEPATH ??= "${S}"
+# Major .NET version in use (8, 9, 10 or 11). Normally set in conf/layer.conf
+# and overridden from local.conf; it selects which dotnet-sdk-native recipe
+# is built via PREFERRED_VERSION_dotnet-sdk-native.
+DOTNET_VERSION ??= "10"
+
+# Target framework moniker matching the selected SDK. Not passed to
+# `dotnet publish` automatically (so multi-targeting projects keep working),
+# but available to recipes, e.g. -f ${DOTNET_TARGET_FRAMEWORK}.
+DOTNET_TARGET_FRAMEWORK ?= "net${DOTNET_VERSION}.0"
 
 DEPENDS:prepend = "dotnet-sdk-native "
 
@@ -34,7 +41,7 @@ dotnet_do_configure() {
      exit -1
     fi
     cd ${S}
-    dotnet restore
+    ${STAGING_DIR_NATIVE}${bindir}/dotnet restore
 }
 
 dotnet_do_compile() {

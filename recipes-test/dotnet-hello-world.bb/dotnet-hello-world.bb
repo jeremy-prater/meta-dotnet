@@ -1,4 +1,4 @@
-DESCRIPTION = "dotnet 5.0 test application"
+DESCRIPTION = ".NET test application (targets the framework bundled with the selected SDK)"
 LICENSE = "CLOSED"
 
 SRC_URI = "file://hello-world/hello-world.cs \
@@ -8,6 +8,8 @@ SRC_URI = "file://hello-world/hello-world.cs \
 
 DOTNET_PROJECT = "hello-world"
 
-S = "${WORKDIR}"
+# Newer releases (styhead and later) unpack into UNPACKDIR rather than WORKDIR;
+# older releases (kirkstone/scarthgap) do not define UNPACKDIR.
+S = "${@d.getVar('UNPACKDIR') or d.getVar('WORKDIR')}"
 
 inherit dotnet
