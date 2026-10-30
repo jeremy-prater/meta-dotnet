@@ -26,12 +26,20 @@ python () {
 }
 
 ARTIFACTS_DIR = "${WORKDIR}/artifacts"
+# A stale artifacts tree lets the trimmer skip work when only properties changed.
+do_compile[cleandirs] += "${ARTIFACTS_DIR}"
 RELEASE_DIR ?= "${ARTIFACTS_DIR}/publish/${DOTNET_PROJECT}/release_${BUILD_TARGET}/"
 
 INSTALL_DIR ?= "/opt/dotnet/${PN}"
 
 ENABLE_READYTORUN ?= "false"
 ENABLE_TRIMMING ?= "true"
+# The PDB path is embedded in the assembly by the trimmer and trips the
+# buildpaths QA check; set to "portable" or "embedded" to keep symbols. With
+# "none" the trimmer also drops the symbols of the dependencies it rewrites.
+DOTNET_DEBUG_TYPE ?= "none"
+# Bundle managed assemblies into the executable. Native libraries stay beside it.
+ENABLE_SINGLEFILE ?= "false"
 
 dotnet_do_configure() {
     # Don't use users's $HOME/.dotnet during configuration
@@ -55,6 +63,9 @@ dotnet_do_compile() {
         --self-contained true \
         -p:PublishTrimmed=${ENABLE_TRIMMING} \
         -p:PublishReadyToRun=${ENABLE_READYTORUN} \
+        -p:DebugType=${DOTNET_DEBUG_TYPE} \
+        -p:TrimmerRemoveSymbols=${@'false' if '${DOTNET_DEBUG_TYPE}' != 'none' else 'true'} \
+        -p:PublishSingleFile=${ENABLE_SINGLEFILE} \
         -c Release \
         ${DOTNET_PROJECT}
 }
